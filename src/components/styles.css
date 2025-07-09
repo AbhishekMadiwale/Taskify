@@ -1,45 +1,97 @@
 .input {
-    display: flex;
-    width: 90%;
-    position: relative;
-    align-items: center;
+  display: flex;
+  width: 90%;
+  position: relative;
+  align-items: center;
 }
 
 .input_box {
-    width: 100%;
-    border-radius: 50px;
-    padding: 20px 30px;
-    font-size: 25px;
-    border: none;
-    transition: 0.2s;
-    box-shadow: inset 0 0 5px black;
+  width: 100%;
+  border-radius: 50px;
+  padding: 20px 30px;
+  font-size: 25px;
+  border: none;
+  transition: 0.2s;
+  box-shadow: inset 0 0 5px black;
 }
 
 .input_box:focus {
     box-shadow: 0 0 10px 1000px rgba(0,0,0,0.5);
-    outline: none;
+  outline: none;
 }
 
 .input_submit {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    margin: 12px;
-    border-radius: 50px;
-    right: 0px;
-    border: none;
-    font-size: 15px;
-    background-color: #2f74c0;
-    color: white;
-    transition: 0.2s all;
-    box-shadow: 0 0 10px black;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: 12px;
+  border-radius: 50px;
+  right: 0px;
+  border: none;
+  font-size: 15px;
+  background-color: #2f74c0;
+  color: white;
+  transition: 0.2s all;
+  box-shadow: 0 0 10px black;
 }
 
 .input_submit:hover {
-    background-color: #388ae2;
+  background-color: #388ae2;
 }
 
 .input_submit:active {
-    transform: scale(0.8);
-    box-shadow: 0 0 5px black;
+  transform: scale(0.8);
+  box-shadow: 0 0 5px black;
+}
+
+.todoList {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
+.todoCards {
+  display: flex;
+  width: 30%;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 15px;
+  background-image: url("../assets/bgimg.jpg");
+}
+
+.todo__single--card {
+  flex: 1;
+  padding: 5px;
+  border: none;
+  font-size: 20px;
+}
+
+.todo__single--card:focus {
+  outline: none;
+}
+
+.icon {
+  margin-left: 10px;
+  padding: 5px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .todoCards {
+    width: 40%;
+  }
+}
+
+@media (max-width: 700px) {
+  .input {
+    width: 95%;
+  }
+  .todoCards {
+    width: 95%;
+  }
+  .todo__single--card {
+    width: 100%;
+  }
 }

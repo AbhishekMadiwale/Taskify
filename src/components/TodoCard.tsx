@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Todo } from "../model";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -27,12 +27,31 @@ const TodoCard: React.FC<Props> = ({ todo, todoList, setTodoList }) => {
     setTodoList(todoList.filter((todo) => todo.id !== id));
   };
 
-  const handleEdit = () => {};
+  const handleEdit = (e: React.FormEvent, id: number) => {
+    e.preventDefault();
+    setTodoList(
+      todoList.map((todo) =>
+        todo.id === id ? { ...todo, todo: editTodo } : todo
+      )
+    );
+    setEdit(false)
+  };
+
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() =>{
+    inputRef.current?.focus();
+  },[edit])
 
   return (
-    <form className="todoCards">
+    <form className="todoCards" onSubmit={(e) => handleEdit(e, todo.id)}>
       {edit ? (
-        <input />
+        <input
+          ref={inputRef}
+          value={editTodo}
+          onChange={(e) => setEditTodo(e.target.value)}
+          className="todoEditBox"
+        />
       ) : todo.isDone ? (
         <s className="todo__single--card">{todo.todo}</s>
       ) : (
